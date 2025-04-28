@@ -66,6 +66,7 @@ public class MenuDashPeg extends javax.swing.JPanel {
         setLayout(new java.awt.CardLayout());
 
         page_dashpeg.setBackground(new java.awt.Color(255, 244, 232));
+        page_dashpeg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         card_pelanggan.setBackground(new java.awt.Color(255, 244, 232));
         card_pelanggan.setRoundBottomLeft(10);
@@ -89,6 +90,8 @@ public class MenuDashPeg extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Rectangle 132.png"))); // NOI18N
         card_pelanggan.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        page_dashpeg.add(card_pelanggan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 91, -1, -1));
+
         card_items.setBackground(new java.awt.Color(255, 244, 232));
         card_items.setRoundBottomLeft(10);
         card_items.setRoundBottomRight(10);
@@ -110,6 +113,8 @@ public class MenuDashPeg extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Rectangle 132.png"))); // NOI18N
         card_items.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        page_dashpeg.add(card_items, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 91, -1, -1));
 
         card_penyewaan.setBackground(new java.awt.Color(255, 244, 232));
         card_penyewaan.setRoundBottomLeft(10);
@@ -133,6 +138,8 @@ public class MenuDashPeg extends javax.swing.JPanel {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Rectangle 132.png"))); // NOI18N
         card_penyewaan.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        page_dashpeg.add(card_penyewaan, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 91, -1, -1));
+
         card_pengembalian.setBackground(new java.awt.Color(255, 244, 232));
         card_pengembalian.setRoundBottomLeft(10);
         card_pengembalian.setRoundBottomRight(10);
@@ -154,6 +161,8 @@ public class MenuDashPeg extends javax.swing.JPanel {
 
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Rectangle 132.png"))); // NOI18N
         card_pengembalian.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 120));
+
+        page_dashpeg.add(card_pengembalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 222, -1, -1));
 
         card_stok.setBackground(new java.awt.Color(255, 244, 232));
         card_stok.setRoundBottomLeft(10);
@@ -177,78 +186,22 @@ public class MenuDashPeg extends javax.swing.JPanel {
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Rectangle 132.png"))); // NOI18N
         card_stok.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 120));
 
+        page_dashpeg.add(card_stok, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 222, -1, -1));
+
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Group 76.png"))); // NOI18N
+        page_dashpeg.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 27, 312, 37));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Group 74.png"))); // NOI18N
+        page_dashpeg.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 27, 41, 37));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Group 28.png"))); // NOI18N
+        page_dashpeg.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 69));
 
         jLabel19.setText("Username");
+        page_dashpeg.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
 
         jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Chart.png"))); // NOI18N
-
-        javax.swing.GroupLayout page_dashpegLayout = new javax.swing.GroupLayout(page_dashpeg);
-        page_dashpeg.setLayout(page_dashpegLayout);
-        page_dashpegLayout.setHorizontalGroup(
-            page_dashpegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(page_dashpegLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(page_dashpegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(page_dashpegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(page_dashpegLayout.createSequentialGroup()
-                            .addComponent(card_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(card_items, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(card_penyewaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, page_dashpegLayout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(card_pengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(card_stok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(128, 128, 128)))
-                    .addGroup(page_dashpegLayout.createSequentialGroup()
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(244, 244, 244)
-                        .addComponent(jLabel19)
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel18)))
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, page_dashpegLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-        );
-        page_dashpegLayout.setVerticalGroup(
-            page_dashpegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(page_dashpegLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(page_dashpegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(page_dashpegLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(page_dashpegLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(page_dashpegLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(page_dashpegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(card_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(card_items, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(card_penyewaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(page_dashpegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(card_pengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(card_stok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-        );
+        page_dashpeg.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 403, 739, 242));
 
         add(page_dashpeg, "card2");
     }// </editor-fold>//GEN-END:initComponents
