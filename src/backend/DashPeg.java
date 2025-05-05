@@ -124,6 +124,9 @@ public class DashPeg extends javax.swing.JFrame {
         btn_pelanggan.setRoundTopLeft(10);
         btn_pelanggan.setRoundTopRight(10);
         btn_pelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_pelangganMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_pelangganMouseEntered(evt);
             }
@@ -295,11 +298,15 @@ public class DashPeg extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_barangMouseExited
 
     private void btn_pelangganMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pelangganMouseEntered
+         if (activePanel != btn_pelanggan) {
         ((panel_custom) btn_pelanggan).setDynamicSize(200, btn_pelanggan.getHeight());
+         }
     }//GEN-LAST:event_btn_pelangganMouseEntered
 
     private void btn_pelangganMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pelangganMouseExited
+         if (activePanel != btn_pelanggan) {
         ((panel_custom) btn_pelanggan).setDynamicSize(180, btn_pelanggan.getHeight());
+         }
     }//GEN-LAST:event_btn_pelangganMouseExited
 
     private void btn_penyewaanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_penyewaanMouseEntered
@@ -386,6 +393,21 @@ public class DashPeg extends javax.swing.JFrame {
         page.repaint();
         page.revalidate();
     }//GEN-LAST:event_btn_pengembalianMouseClicked
+
+    private void btn_pelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pelangganMouseClicked
+        // TODO add your handling code here:
+        if (activePanel != null && activePanel != btn_pelanggan) {
+            activePanel.setDynamicSize(180, activePanel.getHeight());
+        }
+
+        activePanel = (panel_custom) btn_pelanggan;
+        activePanel.setDynamicSize(200, btn_pelanggan.getHeight());
+
+        page.removeAll();
+        page.add(new MenuPelanggan());
+        page.repaint();
+        page.revalidate();
+    }//GEN-LAST:event_btn_pelangganMouseClicked
 
     boolean panjang = false;
     
