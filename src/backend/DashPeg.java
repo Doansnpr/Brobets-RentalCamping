@@ -211,6 +211,9 @@ public class DashPeg extends javax.swing.JFrame {
         btn_stok.setRoundTopLeft(10);
         btn_stok.setRoundTopRight(10);
         btn_stok.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_stokMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_stokMouseEntered(evt);
             }
@@ -222,6 +225,11 @@ public class DashPeg extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/sidebar/STOK MASUK.png"))); // NOI18N
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
         btn_stok.add(jLabel13);
         jLabel13.setBounds(41, 10, 100, 20);
 
@@ -334,11 +342,15 @@ public class DashPeg extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_pengembalianMouseExited
 
     private void btn_stokMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_stokMouseEntered
-       ((panel_custom) btn_stok).setDynamicSize(200, btn_stok.getHeight());
+       if (activePanel != btn_stok) {
+        ((panel_custom) btn_stok).setDynamicSize(200, btn_stok.getHeight());
+       }
     }//GEN-LAST:event_btn_stokMouseEntered
 
     private void btn_stokMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_stokMouseExited
+        if (activePanel != btn_stok) {
         ((panel_custom) btn_stok).setDynamicSize(180, btn_stok.getHeight());
+        }
     }//GEN-LAST:event_btn_stokMouseExited
 
     private void btn_dashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_dashMouseClicked
@@ -408,6 +420,26 @@ public class DashPeg extends javax.swing.JFrame {
         page.repaint();
         page.revalidate();
     }//GEN-LAST:event_btn_pelangganMouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void btn_stokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_stokMouseClicked
+        // TODO add your handling code here:
+          if (activePanel != null && activePanel != btn_stok) {
+            activePanel.setDynamicSize(180, activePanel.getHeight());
+        }
+
+        activePanel = (panel_custom) btn_stok;
+        activePanel.setDynamicSize(200, btn_stok.getHeight());
+
+        page.removeAll();
+        page.add(new StokMasuuk());
+        page.repaint();
+        page.revalidate();
+        
+    }//GEN-LAST:event_btn_stokMouseClicked
 
     boolean panjang = false;
     
