@@ -8,9 +8,9 @@ import javax.swing.JOptionPane;
 
 public class Koneksi {
  
-    Connection con;
+    static Connection con;
     
-    public void config(){
+    public static void config(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/brobets", "root", "");
@@ -21,7 +21,7 @@ public class Koneksi {
         }
     }
     
-    public java.sql.Connection getConnection() {
+    public static Connection getConnection() {
         return con;
     }
     
