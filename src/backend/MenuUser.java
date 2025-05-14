@@ -220,6 +220,11 @@ public class MenuUser extends javax.swing.JPanel {
         rbAdmin.setText("Admin");
         rbAdmin.setBorder(null);
         rbAdmin.setContentAreaFilled(false);
+        rbAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAdminActionPerformed(evt);
+            }
+        });
         form_tambah.add(rbAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 405, -1, -1));
 
         buttonGroup1.add(rbPegawai);
@@ -227,6 +232,11 @@ public class MenuUser extends javax.swing.JPanel {
         rbPegawai.setText("Pegawai");
         rbPegawai.setBorder(null);
         rbPegawai.setContentAreaFilled(false);
+        rbPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPegawaiActionPerformed(evt);
+            }
+        });
         form_tambah.add(rbPegawai, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 405, -1, -1));
 
         jScrollPane3.setBorder(null);
@@ -886,6 +896,14 @@ public class MenuUser extends javax.swing.JPanel {
             txt_password1.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txt_password1FocusLost
+
+    private void rbPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPegawaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbPegawaiActionPerformed
+
+    private void rbAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbAdminActionPerformed
     
     String url = "jdbc:mysql://localhost:3306/brobets";
     String user = "root";

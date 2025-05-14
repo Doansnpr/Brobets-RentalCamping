@@ -1,6 +1,7 @@
 
 package backend;
 
+import backend.MenuBarang.EnumComboBoxLoader;
 import custom.panel_custom;
 
 
@@ -10,6 +11,8 @@ public class DashPeg extends javax.swing.JFrame {
    
     public DashPeg() {
         initComponents();
+       
+
     }
 
   
@@ -98,6 +101,9 @@ public class DashPeg extends javax.swing.JFrame {
         btn_barang.setRoundTopLeft(10);
         btn_barang.setRoundTopRight(10);
         btn_barang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_barangMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_barangMouseEntered(evt);
             }
@@ -408,6 +414,21 @@ public class DashPeg extends javax.swing.JFrame {
         page.repaint();
         page.revalidate();
     }//GEN-LAST:event_btn_pelangganMouseClicked
+
+    private void btn_barangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_barangMouseClicked
+        // TODO add your handling code here:
+        if (activePanel != null && activePanel != btn_barang) {
+            activePanel.setDynamicSize(180, activePanel.getHeight());
+        }
+
+        activePanel = (panel_custom) btn_barang;
+        activePanel.setDynamicSize(200, btn_barang.getHeight());
+
+        page.removeAll();
+        page.add(new MenuBarang());
+        page.repaint();
+        page.revalidate();
+    }//GEN-LAST:event_btn_barangMouseClicked
 
     boolean panjang = false;
     
