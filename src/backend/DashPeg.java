@@ -373,31 +373,11 @@ public class DashPeg extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseDragged
 
     private void btn_penyewaanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_penyewaanMouseClicked
-        if (activePanel != null && activePanel != btn_penyewaan) {
-            activePanel.setDynamicSize(180, activePanel.getHeight());
-        }
-
-        activePanel = (panel_custom) btn_penyewaan;
-        activePanel.setDynamicSize(200, btn_penyewaan.getHeight());
-
-        page.removeAll();
-        page.add(new MenuPenyewaan());
-        page.repaint();
-        page.revalidate();
+        
     }//GEN-LAST:event_btn_penyewaanMouseClicked
 
     private void btn_pengembalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengembalianMouseClicked
-        if (activePanel != null && activePanel != btn_pengembalian) {
-            activePanel.setDynamicSize(180, activePanel.getHeight());
-        }
-
-        activePanel = (panel_custom) btn_pengembalian;
-        activePanel.setDynamicSize(200, btn_pengembalian.getHeight());
-
-        page.removeAll();
-        page.add(new MenuPengembalian());
-        page.repaint();
-        page.revalidate();
+       
     }//GEN-LAST:event_btn_pengembalianMouseClicked
 
     private void btn_pelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pelangganMouseClicked
