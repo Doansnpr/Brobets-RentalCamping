@@ -400,7 +400,7 @@ public class EnumComboBoxLoader {
         });
         form_tambah.add(txt_beli, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 298, 440, 25));
 
-        txt_harga.setText("Harga"); txt_harga.setForeground(Color.GRAY);
+        txt_harga.setText("Harga Sewa"); txt_harga.setForeground(Color.GRAY);
         txt_harga.setBackground(new java.awt.Color(255, 244, 232));
         txt_harga.setForeground(new java.awt.Color(153, 153, 153));
         txt_harga.setToolTipText("");
