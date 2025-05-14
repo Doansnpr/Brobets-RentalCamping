@@ -1,19 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package backend;
 
-import backend.Koneksi;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.sql.*;
 
-/**
- *
- * @author Toshiba
- */
+
 public class MenuPelanggan extends javax.swing.JPanel {
 
  JTable table;
@@ -22,6 +15,7 @@ public class MenuPelanggan extends javax.swing.JPanel {
     public MenuPelanggan() {
         initComponents();
          loadDataTabel();
+         label_username.setText(Login.Session.getUsername());
     }
 
     private void loadDataTabel() {
@@ -30,10 +24,10 @@ public class MenuPelanggan extends javax.swing.JPanel {
     model.addColumn("Nama");
     model.addColumn("No HP");
     model.addColumn("Poin");
+    model.addColumn("Status");
 
-    jTable_custom1.setModel(model); // Set model sebelum isi data
+    jTable_custom1.setModel(model);
 
-    // Panggil koneksi
     Koneksi koneksi = new Koneksi();
     koneksi.config();
 
@@ -47,7 +41,8 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 rs.getString("id_pelanggan"),
                 rs.getString("nama_pelanggan"),
                 rs.getString("no_hp"),
-                rs.getInt("poin")
+                rs.getInt("poin"),
+                rs.getString("status")
             });
         }
 
@@ -58,18 +53,20 @@ public class MenuPelanggan extends javax.swing.JPanel {
     }
 }
 
+
+
     private void hapusData() {
     int selectedRow = jTable_custom1.getSelectedRow();
     if (selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "Pilih baris yang ingin dihapus!");
+        JOptionPane.showMessageDialog(this, "Pilih baris yang ingin dinonaktifkan!");
         return;
     }
 
-    String idPelanggan = jTable_custom1.getValueAt(selectedRow, 0).toString(); // Ambil id dari kolom pertama
+    String idPelanggan = jTable_custom1.getValueAt(selectedRow, 0).toString();
 
     int konfirmasi = JOptionPane.showConfirmDialog(this,
-            "Yakin ingin menghapus data dengan ID: " + idPelanggan + "?",
-            "Konfirmasi Hapus",
+            "Yakin ingin menonaktifkan pelanggan dengan ID: " + idPelanggan + "?",
+            "Konfirmasi",
             JOptionPane.YES_NO_OPTION);
 
     if (konfirmasi == JOptionPane.YES_OPTION) {
@@ -78,18 +75,46 @@ public class MenuPelanggan extends javax.swing.JPanel {
             koneksi.config();
             Connection conn = koneksi.getConnection();
 
-            String sql = "DELETE FROM pelanggan WHERE id_pelanggan=?";
+            String sql = "UPDATE pelanggan SET status='nonaktif' WHERE id_pelanggan=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, idPelanggan);
             ps.executeUpdate();
 
-            JOptionPane.showMessageDialog(this, "Data berhasil dihapus!");
-            loadDataTabel(); // reload tabel setelah hapus
+            JOptionPane.showMessageDialog(this, "Pelanggan dinonaktifkan!");
+            loadDataTabel();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Gagal menghapus data: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Gagal: " + e.getMessage());
         }
     }
 }
+
+    private void aktifkanKembali() {
+    int selectedRow = jTable_custom1.getSelectedRow();
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Pilih baris yang ingin diaktifkan kembali!");
+        return;
+    }
+
+    String idPelanggan = jTable_custom1.getValueAt(selectedRow, 0).toString();
+
+    try {
+        Koneksi koneksi = new Koneksi();
+        koneksi.config();
+        Connection conn = koneksi.getConnection();
+
+        String sql = "UPDATE pelanggan SET status='aktif' WHERE id_pelanggan=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, idPelanggan);
+        ps.executeUpdate();
+
+        JOptionPane.showMessageDialog(this, "Pelanggan diaktifkan kembali!");
+        loadDataTabel();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Gagal mengaktifkan kembali: " + e.getMessage());
+    }
+}
+
+
 
     private void cariData() {
     DefaultTableModel model = new DefaultTableModel();
@@ -145,11 +170,11 @@ public class MenuPelanggan extends javax.swing.JPanel {
         jLabel25 = new javax.swing.JLabel();
         btn_search = new javax.swing.JButton();
         txt_search = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        btn_hapus = new javax.swing.JButton();
+        btn_aktif = new javax.swing.JButton();
+        btn_nonaktif = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        label_username = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_custom1 = new custom.JTable_custom();
 
@@ -173,13 +198,15 @@ public class MenuPelanggan extends javax.swing.JPanel {
 
         btn_search.setBorderPainted(false);
         btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Button Search.png"))); // NOI18N
+        btn_search.setBorder(null);
+        btn_search.setContentAreaFilled(false);
         btn_search.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Button Search Select.png"))); // NOI18N
         btn_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_searchActionPerformed(evt);
             }
         });
-        page_penyewaan.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 50, 40));
+        page_penyewaan.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 118, 60, 50));
 
         txt_search.setBackground(new java.awt.Color(238, 236, 227));
         txt_search.setBorder(null);
@@ -188,33 +215,50 @@ public class MenuPelanggan extends javax.swing.JPanel {
                 txt_searchActionPerformed(evt);
             }
         });
-        page_penyewaan.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 181, 290, 20));
+        page_penyewaan.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 133, 240, 20));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Search.png"))); // NOI18N
-        page_penyewaan.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 410, -1));
-
-        btn_hapus.setContentAreaFilled(false);
-        btn_hapus.setBorderPainted(false);
-        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Button Hapus.png"))); // NOI18N
-        btn_hapus.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Button Hapus Select.png"))); // NOI18N
-        btn_hapus.addActionListener(new java.awt.event.ActionListener() {
+        btn_aktif.setContentAreaFilled(false);
+        btn_aktif.setBorderPainted(false);
+        btn_aktif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pelanggan/Button Aktif.png"))); // NOI18N
+        btn_aktif.setToolTipText("");
+        btn_aktif.setBorder(null);
+        btn_aktif.setContentAreaFilled(false);
+        btn_aktif.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pelanggan/Button Aktif Select.png"))); // NOI18N
+        btn_aktif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_hapusActionPerformed(evt);
+                btn_aktifActionPerformed(evt);
             }
         });
-        page_penyewaan.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 170, -1, 40));
+        page_penyewaan.add(btn_aktif, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, -1, 40));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/BG Button.png"))); // NOI18N
-        page_penyewaan.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 720, 65));
+        btn_nonaktif.setContentAreaFilled(false);
+        btn_nonaktif.setBorderPainted(false);
+        btn_nonaktif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pelanggan/Button Nonaktif.png"))); // NOI18N
+        btn_nonaktif.setBorder(null);
+        btn_nonaktif.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pelanggan/Button Nonaktif Select.png"))); // NOI18N
+        btn_nonaktif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nonaktifActionPerformed(evt);
+            }
+        });
+        page_penyewaan.add(btn_nonaktif, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, -1, 40));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pelanggan/Fitur Search.png"))); // NOI18N
+        page_penyewaan.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 720, 65));
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Group 28.png"))); // NOI18N
         page_penyewaan.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 69));
 
-        jLabel27.setText("Username");
-        page_penyewaan.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
+        label_username.setText("Username");
+        page_penyewaan.add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
 
         jTable_custom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -226,17 +270,17 @@ public class MenuPelanggan extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable_custom1);
 
-        page_penyewaan.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 730, 370));
+        page_penyewaan.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 730, 400));
 
         page_main.add(page_penyewaan, "card2");
 
         add(page_main, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
+    private void btn_nonaktifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nonaktifActionPerformed
         // TODO add your handling code here:
         hapusData();
-    }//GEN-LAST:event_btn_hapusActionPerformed
+    }//GEN-LAST:event_btn_nonaktifActionPerformed
 
     private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
         // TODO add your handling code here:
@@ -247,21 +291,26 @@ public class MenuPelanggan extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_searchActionPerformed
 
+    private void btn_aktifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_aktifActionPerformed
+        // TODO add your handling code here:
+         aktifkanKembali();
+    }//GEN-LAST:event_btn_aktifActionPerformed
+
 
 
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_hapus;
+    private javax.swing.JButton btn_aktif;
+    private javax.swing.JButton btn_nonaktif;
     private javax.swing.JButton btn_search;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private custom.JTable_custom jTable_custom1;
+    private javax.swing.JLabel label_username;
     private javax.swing.JPanel page_main;
     private javax.swing.JPanel page_penyewaan;
     private javax.swing.JTextField txt_search;

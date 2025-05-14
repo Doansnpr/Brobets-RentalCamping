@@ -10,6 +10,14 @@ public class DashPeg extends javax.swing.JFrame {
    
     public DashPeg() {
         initComponents();
+        
+       activePanel = (panel_custom) btn_dash; 
+       activePanel.setDynamicSize(200, btn_dash.getHeight()); 
+
+        page.removeAll();
+        page.add(new MenuDashPeg());
+        page.repaint();
+        page.revalidate();
     }
 
   
@@ -22,6 +30,9 @@ public class DashPeg extends javax.swing.JFrame {
         btn_dash = new custom.panel_custom();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btn_pemasok = new custom.panel_custom();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         btn_barang = new custom.panel_custom();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -45,7 +56,6 @@ public class DashPeg extends javax.swing.JFrame {
         page = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -91,6 +101,40 @@ public class DashPeg extends javax.swing.JFrame {
         jLabel4.setBounds(8, 5, 27, 27);
 
         sidebar.add(btn_dash, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+
+        btn_pemasok.setBackground(new java.awt.Color(255, 244, 232));
+        btn_pemasok.setRoundBottomLeft(10);
+        btn_pemasok.setRoundBottomRight(10);
+        btn_pemasok.setRoundTopLeft(10);
+        btn_pemasok.setRoundTopRight(10);
+        btn_pemasok.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_pemasokMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_pemasokMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_pemasokMouseExited(evt);
+            }
+        });
+        btn_pemasok.setLayout(null);
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/sidebar/PEMASOK.png"))); // NOI18N
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        btn_pemasok.add(jLabel17);
+        jLabel17.setBounds(41, 10, 100, 20);
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/sidebar/Shopping_Cart_01.png"))); // NOI18N
+        btn_pemasok.add(jLabel18);
+        jLabel18.setBounds(8, 5, 30, 29);
+
+        sidebar.add(btn_pemasok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
 
         btn_barang.setBackground(new java.awt.Color(255, 244, 232));
         btn_barang.setRoundBottomLeft(10);
@@ -174,7 +218,7 @@ public class DashPeg extends javax.swing.JFrame {
         btn_penyewaan.add(jLabel10);
         jLabel10.setBounds(8, 5, 28, 28);
 
-        sidebar.add(btn_penyewaan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+        sidebar.add(btn_penyewaan, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
 
         btn_pengembalian.setBackground(new java.awt.Color(255, 244, 232));
         btn_pengembalian.setRoundBottomLeft(10);
@@ -203,7 +247,7 @@ public class DashPeg extends javax.swing.JFrame {
         btn_pengembalian.add(jLabel12);
         jLabel12.setBounds(8, 5, 28, 28);
 
-        sidebar.add(btn_pengembalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, -1));
+        sidebar.add(btn_pengembalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
 
         btn_stok.setBackground(new java.awt.Color(255, 244, 232));
         btn_stok.setRoundBottomLeft(10);
@@ -240,7 +284,7 @@ public class DashPeg extends javax.swing.JFrame {
         sidebar.add(btn_stok, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/sidebar/Group 81.png"))); // NOI18N
-        sidebar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 200, 30));
+        sidebar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 200, 30));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/sidebar/Group 80.png"))); // NOI18N
         sidebar.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 200, 30));
@@ -441,6 +485,26 @@ public class DashPeg extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_stokMouseClicked
 
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel17MouseClicked
+
+    private void btn_pemasokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseClicked
+        
+    }//GEN-LAST:event_btn_pemasokMouseClicked
+
+    private void btn_pemasokMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseEntered
+       if (activePanel != btn_pemasok) {
+        ((panel_custom) btn_pemasok).setDynamicSize(200, btn_pemasok.getHeight());
+       }
+    }//GEN-LAST:event_btn_pemasokMouseEntered
+
+    private void btn_pemasokMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pemasokMouseExited
+        if (activePanel != btn_pemasok) {
+        ((panel_custom) btn_pemasok).setDynamicSize(180, btn_pemasok.getHeight());
+        }
+    }//GEN-LAST:event_btn_pemasokMouseExited
+
     boolean panjang = false;
     
     /**
@@ -482,6 +546,7 @@ public class DashPeg extends javax.swing.JFrame {
     private custom.panel_custom btn_barang;
     private custom.panel_custom btn_dash;
     private custom.panel_custom btn_pelanggan;
+    private custom.panel_custom btn_pemasok;
     private custom.panel_custom btn_pengembalian;
     private custom.panel_custom btn_penyewaan;
     private custom.panel_custom btn_stok;
@@ -495,6 +560,8 @@ public class DashPeg extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

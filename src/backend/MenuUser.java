@@ -27,6 +27,7 @@ public class MenuUser extends javax.swing.JPanel {
         initComponents();
         txt_password.setText("Masukkan Password");
         txt_password.setEchoChar((char) 0); 
+        label_username.setText(Login.Session.getUsername());
 
         try {
             loadDataFromDatabase();
@@ -57,7 +58,7 @@ public class MenuUser extends javax.swing.JPanel {
         btn_ubah = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        label_username = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_user = new custom.JTable_custom();
         page_tambah = new javax.swing.JPanel();
@@ -174,8 +175,8 @@ public class MenuUser extends javax.swing.JPanel {
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Group 28.png"))); // NOI18N
         page_user.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 69));
 
-        jLabel27.setText("Username");
-        page_user.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
+        label_username.setText("Username");
+        page_user.add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
 
         tb_user.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -962,7 +963,6 @@ public class MenuUser extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
@@ -975,6 +975,7 @@ public class MenuUser extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel label_username;
     private javax.swing.JPanel page_main;
     private javax.swing.JPanel page_tambah;
     private javax.swing.JPanel page_ubah;

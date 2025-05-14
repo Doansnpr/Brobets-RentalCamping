@@ -24,6 +24,7 @@ public class MenuDashAdm extends javax.swing.JPanel {
      */
     public MenuDashAdm() {
         initComponents();
+        label_username.setText(Login.Session.getUsername());
         
     }
 
@@ -54,7 +55,7 @@ public class MenuDashAdm extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        label_username = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
@@ -125,8 +126,8 @@ public class MenuDashAdm extends javax.swing.JPanel {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Group 28.png"))); // NOI18N
         page_dashadm.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 69));
 
-        jLabel19.setText("Username");
-        page_dashadm.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
+        label_username.setText("Username");
+        page_dashadm.add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
 
         jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Chart.png"))); // NOI18N
         page_dashadm.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 403, 739, 242));
@@ -145,7 +146,6 @@ public class MenuDashAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
@@ -153,6 +153,7 @@ public class MenuDashAdm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel label_username;
     private javax.swing.JLabel omset;
     private javax.swing.JPanel page_dashadm;
     private javax.swing.JLabel user;

@@ -16,6 +16,8 @@ private Map<String, String> barangMap = new HashMap<>();
     public StokMasuuk() {
         
         initComponents();
+        loadDataStokMasuk();
+        label_username.setText(Login.Session.getUsername());
     }
     private void loadBarangKeComboBox() {
     DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
@@ -124,7 +126,6 @@ private void cariBarang() {
 
         page_mainn = new javax.swing.JPanel();
         page_stokmasuk = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         btn_search = new javax.swing.JButton();
         txt_search = new javax.swing.JTextField();
@@ -133,9 +134,10 @@ private void cariBarang() {
         btn_hapus = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        label_username = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_custom1 = new custom.JTable_custom();
+        jLabel24 = new javax.swing.JLabel();
         page_tambahstokmasuk = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -158,9 +160,6 @@ private void cariBarang() {
         page_stokmasuk.setPreferredSize(new java.awt.Dimension(836, 666));
         page_stokmasuk.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/stokmasuk/Stok Masuk.png"))); // NOI18N
-        page_stokmasuk.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 27, 250, 37));
-
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Group 74.png"))); // NOI18N
         page_stokmasuk.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 27, 41, 37));
 
@@ -169,8 +168,9 @@ private void cariBarang() {
         btn_search.setBorderPainted(false);
         btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Button Search.png"))); // NOI18N
         btn_search.setBorder(null);
+        btn_search.setContentAreaFilled(false);
         btn_search.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Button Search Select.png"))); // NOI18N
-        page_stokmasuk.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 40, 40));
+        page_stokmasuk.add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 50, 40));
 
         txt_search.setBackground(new java.awt.Color(238, 236, 227));
         txt_search.setBorder(null);
@@ -179,16 +179,17 @@ private void cariBarang() {
                 txt_searchActionPerformed(evt);
             }
         });
-        page_stokmasuk.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 280, 20));
+        page_stokmasuk.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 280, 20));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Search.png"))); // NOI18N
-        page_stokmasuk.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 400, -1));
+        page_stokmasuk.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 400, -1));
 
         btn_tambah.setContentAreaFilled(false);
 
         btn_tambah.setBorderPainted(false);
         btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/stokmasuk/Group 49.png"))); // NOI18N
         btn_tambah.setBorder(null);
+        btn_tambah.setContentAreaFilled(false);
         btn_tambah.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/stokmasuk/Group 102.png"))); // NOI18N
         btn_tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,25 +202,33 @@ private void cariBarang() {
         btn_hapus.setBorderPainted(false);
         btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Button Hapus.png"))); // NOI18N
         btn_hapus.setBorder(null);
+        btn_hapus.setContentAreaFilled(false);
         btn_hapus.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/Button Hapus Select.png"))); // NOI18N
         btn_hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_hapusActionPerformed(evt);
             }
         });
-        page_stokmasuk.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, -1, 40));
+        page_stokmasuk.add(btn_hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, 40));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/penyewaan/BG Button.png"))); // NOI18N
-        page_stokmasuk.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 720, 65));
+        page_stokmasuk.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 710, 65));
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/dashpeg/Group 28.png"))); // NOI18N
         page_stokmasuk.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 69));
 
-        jLabel27.setText("Username");
-        page_stokmasuk.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
+        label_username.setText("Username");
+        page_stokmasuk.add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, -1, 20));
 
         jTable_custom1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -231,7 +240,10 @@ private void cariBarang() {
         ));
         jScrollPane1.setViewportView(jTable_custom1);
 
-        page_stokmasuk.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 700, 360));
+        page_stokmasuk.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 710, 380));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/stokmasuk/Stok Masuk.png"))); // NOI18N
+        page_stokmasuk.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 320, 40));
 
         page_mainn.add(page_stokmasuk, "card2");
 
@@ -385,7 +397,6 @@ String selectedNamaBarang = (String) cmb_pilihbarang.getSelectedItem();
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
@@ -393,6 +404,7 @@ String selectedNamaBarang = (String) cmb_pilihbarang.getSelectedItem();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private custom.JTable_custom jTable_custom1;
+    private javax.swing.JLabel label_username;
     private javax.swing.JPanel page_mainn;
     private javax.swing.JPanel page_stokmasuk;
     private javax.swing.JPanel page_tambahstokmasuk;

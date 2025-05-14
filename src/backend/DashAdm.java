@@ -9,6 +9,15 @@ public class DashAdm extends javax.swing.JFrame {
     
     public DashAdm() {
         initComponents();
+        
+        activePanel = (panel_custom) btn_dashadm; // Atur panel aktif
+       activePanel.setDynamicSize(200, btn_dashadm.getHeight()); // Ukuran diperbesar untuk menunjukkan aktif
+
+        // Load dashboard panel ke dalam panel utama
+        page2.removeAll();
+        page2.add(new MenuDashAdm());
+        page2.repaint();
+        page2.revalidate();
     }
 
     @SuppressWarnings("unchecked")
@@ -34,7 +43,6 @@ public class DashAdm extends javax.swing.JFrame {
         page2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
